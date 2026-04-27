@@ -128,8 +128,8 @@ Mỗi app dùng `<BrowserRouter>` + `<Routes>` ở `App.jsx`.
 # apps/customer/netlify.toml
 [build]
   base    = "apps/customer"
-  command = "cd ../.. && pnpm install --frozen-lockfile && pnpm build --filter=@reloop/customer"
-  publish = "apps/customer/dist"
+  command = "cd ../.. && corepack enable && pnpm install --frozen-lockfile && pnpm build --filter=@reloop/customer"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"

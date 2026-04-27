@@ -1,7 +1,7 @@
 [build]
   base    = "apps/portal"
   command = "cd ../.. && corepack enable && pnpm install --frozen-lockfile && pnpm build --filter=@reloop/portal"
-  publish = "apps/portal/dist"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"

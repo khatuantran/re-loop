@@ -1,7 +1,7 @@
 [build]
   base    = "apps/collector"
   command = "cd ../.. && corepack enable && pnpm install --frozen-lockfile && pnpm build --filter=@reloop/collector"
-  publish = "apps/collector/dist"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"

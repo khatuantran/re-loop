@@ -81,14 +81,16 @@ Mỗi app phải pass 3 viewport. Trong Chrome DevTools → Toggle Device Toolba
 
 ## Deploy Netlify
 
-**4 site Netlify riêng biệt**, mỗi site:
+**4 site Netlify riêng biệt** — hướng dẫn step-by-step (tiếng Việt + troubleshooting): [docs/deploy-netlify.md](docs/deploy-netlify.md).
 
-1. **New site from Git** → trỏ tới repo
+Tóm tắt:
+
+1. Netlify dashboard → **Add new site** → import repo
 2. **Base directory:** `apps/<name>` (vd `apps/customer`)
-3. **Build command, Publish directory** đã cấu hình sẵn trong `apps/<name>/netlify.toml`
-4. Deploy. Auto-deploy khi push `main`. Branch deploy preview cho mỗi PR.
+3. **Package directory / Build command / Publish directory:** để **trống** — Netlify tự đọc từ `apps/<name>/netlify.toml`
+4. Deploy. Auto-deploy khi push `main`. Branch preview cho mỗi PR.
 
-Build command tự gọi `pnpm install --frozen-lockfile && pnpm build --filter=@reloop/<name>` từ workspace root.
+Build command tự gọi `corepack enable && pnpm install --frozen-lockfile && pnpm build --filter=@reloop/<name>` từ workspace root.
 
 ## Stack
 
