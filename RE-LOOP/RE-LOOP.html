@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RE-LOOP — Kinh tế Tuần hoàn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+  html, body { font-family: 'Be Vietnam Pro', system-ui, sans-serif; background: #F4F6F4; color: #111827; -webkit-font-smoothing: antialiased; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  /* Subtle grain for premium feel */
+  .grain::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image: radial-gradient(rgba(0,0,0,0.025) 1px, transparent 1px);
+    background-size: 3px 3px; opacity: .5;
+  }
+  /* shimmer */
+  @keyframes shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+  }
+  .shimmer {
+    background: linear-gradient(90deg, #ECFDF5 0%, #D1FAE5 50%, #ECFDF5 100%);
+    background-size: 800px 100%;
+    animation: shimmer 1.6s infinite linear;
+  }
+  @keyframes slideInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .slide-in { animation: slideInUp 0.5s cubic-bezier(.2,.8,.2,1) both; }
+
+  @keyframes pulseDot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.6); opacity: 0.4; }
+  }
+  .pulse-dot { animation: pulseDot 1.6s infinite ease-in-out; }
+
+  @keyframes ping-slow {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(2.6); opacity: 0; }
+  }
+  .ping-slow { animation: ping-slow 2s infinite cubic-bezier(0,0,0.2,1); }
+
+  @keyframes truckMove {
+    0% { offset-distance: 0%; }
+    100% { offset-distance: 100%; }
+  }
+
+  /* hide scrollbar in nav */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Map placeholder grid */
+  .map-grid {
+    background-color: #E8F0EA;
+    background-image:
+      linear-gradient(rgba(16,185,129,0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16,185,129,0.08) 1px, transparent 1px),
+      radial-gradient(circle at 30% 40%, rgba(16,185,129,0.18) 0%, transparent 40%),
+      radial-gradient(circle at 70% 60%, rgba(251,191,36,0.12) 0%, transparent 40%);
+    background-size: 32px 32px, 32px 32px, 100% 100%, 100% 100%;
+  }
+  .map-roads {
+    background-image:
+      linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.7) 48%, rgba(255,255,255,0.7) 52%, transparent 52%),
+      linear-gradient(-30deg, transparent 49%, rgba(255,255,255,0.5) 49%, rgba(255,255,255,0.5) 51%, transparent 51%),
+      linear-gradient(80deg, transparent 49%, rgba(255,255,255,0.4) 49%, rgba(255,255,255,0.4) 51%, transparent 51%);
+    background-size: 200px 200px, 280px 280px, 340px 340px;
+  }
+
+  /* Cert paper */
+  .cert-paper {
+    background: #FFFEF9;
+    background-image:
+      linear-gradient(180deg, transparent 95%, rgba(0,0,0,0.03) 95%);
+    background-size: 100% 24px;
+  }
+  .cert-edge {
+    background-image: radial-gradient(circle at 50% 0, transparent 6px, #FFFEF9 6px);
+    background-size: 18px 12px;
+    background-repeat: repeat-x;
+    height: 12px;
+  }
+  .cert-edge-bottom {
+    background-image: radial-gradient(circle at 50% 100%, transparent 6px, #FFFEF9 6px);
+    background-size: 18px 12px;
+    background-repeat: repeat-x;
+    height: 12px;
+  }
+
+  /* hover lift */
+  .lift { transition: transform .18s ease, box-shadow .18s ease; }
+  .lift:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -12px rgba(4,120,87,0.22); }
+
+  /* spark line - drawn via svg */
+
+  /* photo placeholder */
+  .photo-ph {
+    background: repeating-linear-gradient(45deg, #ECFDF5 0 10px, #D1FAE5 10px 20px);
+  }
+</style>
+</head>
+<body class="min-h-screen">
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="src/icons.jsx"></script>
+<script type="text/babel" src="src/shared.jsx"></script>
+<script type="text/babel" src="src/ScreenHome.jsx"></script>
+<script type="text/babel" src="src/ScreenFlowA.jsx"></script>
+<script type="text/babel" src="src/ScreenFlowB.jsx"></script>
+<script type="text/babel" src="src/ScreenAuction.jsx"></script>
+<script type="text/babel" src="src/ScreenTracking.jsx"></script>
+<script type="text/babel" src="src/ScreenCert.jsx"></script>
+<script type="text/babel" src="src/App.jsx"></script>
+
+</body>
+</html>

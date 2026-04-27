@@ -1,0 +1,12 @@
+[build]
+  base    = "apps/collector"
+  command = "cd ../.. && corepack enable && pnpm install --frozen-lockfile && pnpm build --filter=@reloop/collector"
+  publish = "apps/collector/dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

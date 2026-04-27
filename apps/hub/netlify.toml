@@ -1,0 +1,12 @@
+[build]
+  base    = "apps/hub"
+  command = "cd ../.. && corepack enable && pnpm install --frozen-lockfile && pnpm build --filter=@reloop/hub"
+  publish = "apps/hub/dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

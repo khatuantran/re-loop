@@ -1,0 +1,12 @@
+[build]
+  base    = "apps/portal"
+  command = "cd ../.. && corepack enable && pnpm install --frozen-lockfile && pnpm build --filter=@reloop/portal"
+  publish = "apps/portal/dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

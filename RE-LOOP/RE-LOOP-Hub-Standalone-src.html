@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RE-LOOP Hub Portal — Trạm xử lý</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  html, body { font-family: 'Be Vietnam Pro', system-ui, sans-serif; background: #F4F6F4; color: #111827; -webkit-font-smoothing: antialiased; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  @keyframes slideInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .slide-in { animation: slideInUp 0.4s cubic-bezier(.2,.8,.2,1) both; }
+
+  @keyframes pulseDot { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: .5; } }
+  .pulse-dot { animation: pulseDot 1.6s infinite ease-in-out; }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(15,23,42,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15,23,42,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .photo-ph { background: repeating-linear-gradient(45deg, #ECFDF5 0 10px, #D1FAE5 10px 20px); }
+
+  .lift { transition: all .18s ease; }
+  .lift:hover { transform: translateY(-2px); box-shadow: 0 18px 36px -16px rgba(4,120,87,0.25); }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* gauge ring */
+  .ring-bg { stroke: #E2E8F0; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<template id="__bundler_thumbnail" data-bg-color="#0a5e3e">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0a5e3e"/>
+    <g transform="translate(600 400)" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+      <circle r="170" stroke-opacity="0.25"/>
+      <path d="M -90 -50 L 0 -110 L 90 -50" />
+      <path d="M -90 50 L 0 110 L 90 50" />
+      <path d="M 0 -110 L 0 110" stroke-opacity="0.5"/>
+      <circle r="14" fill="#fff" stroke="none"/>
+    </g>
+    <text x="600" y="640" fill="#ffffff" font-family="system-ui, sans-serif" font-size="46" font-weight="800" text-anchor="middle" letter-spacing="6">RE-LOOP HUB</text>
+  </svg>
+</template>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="src/icons.jsx"></script>
+<script type="text/babel" src="hub/HShared.jsx"></script>
+<script type="text/babel" src="hub/HDashboard.jsx"></script>
+<script type="text/babel" src="hub/HDisassembly.jsx"></script>
+<script type="text/babel" src="hub/HMarketplace.jsx"></script>
+<script type="text/babel" src="hub/HApp.jsx"></script>
+
+</body>
+</html>
